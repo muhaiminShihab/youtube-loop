@@ -1,3 +1,4 @@
+// Player Configuration
 let player;
 
 function onYouTubeIframeAPIReady() {
@@ -64,3 +65,36 @@ function extractVideoId(url) {
     }
     return videoId;
 }
+
+// Service Worker Registration
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+            .then((registration) => {
+                console.log("Service Worker registered:", registration);
+            })
+            .catch((error) => {
+                console.log("Service Worker registration failed:", error);
+            });
+    });
+}
+
+// PWA Installation
+let deferredPrompt;
+window.addEventListener("beforeinstallprompt", (event) => {
+    event.preventDefault();
+    deferredPrompt = event;
+    document.getElementById("installButton").style.display = "block";
+
+    document.getElementById("installButton").addEventListener("click", () => {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choice) => {
+            if (choice.outcome === "accepted") {
+                console.log("User accepted the PWA install");
+            } else {
+                console.log("User dismissed the PWA install");
+            }
+            deferredPrompt = null;
+        });
+    });
+});
