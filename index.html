@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="YouTube Loop Player - Enter a YouTube URL and click 'Play' to loop the video">
+    <meta name="developer" content="https://muhaiminShihab.github.io">
+
+    <!-- Title -->
+    <title>YouTube Loop Player</title>
+    
+    <!-- Icon -->
+    <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+    <link rel="apple-touch-icon" href="icon.png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+    <!-- Main Style -->
+    <link rel="stylesheet" href="main.css">
+    
+    <!-- Main Script -->
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <main
+        class="flex flex-col items-center justify-center min-h-screen w-full bg-linear-to-bl from-violet-500 to-fuchsia-500 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h1 class="text-3xl md:text-5xl font-bold">YouTube Loop Player</h1>
+                <p class="mt-2 text-lg">Enter a YouTube URL and click "Play" to loop the video.</p>
+            </div>
+    
+            <div class="mt-8 max-w-lg mx-auto">
+                <div class="flex items-center justify-between gap-2">
+                    <div class="w-full">
+                        <input type="text" placeholder="Enter YouTube URL" id="youtubeUrl"
+                            class="border border-gray-300 text-sm rounded-lg outline-none block w-full p-2.5">
+                    </div>
+                    <button type="button" id="playButton"
+                        class="border border-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center hover:bg-white hover:text-gray-900 transition ease-in-out">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
+                        </svg>
+                    </button>
+                </div>
+    
+                <div id="videoContainer" class="w-full rounded-lg mt-4 z-0 relative overflow-hidden"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Load YouTube API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+</body>
+
+</html>
